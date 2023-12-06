@@ -1,6 +1,7 @@
 export interface ThingDto {
   name: string;
   volume: number;
-  id?: string;
+  _id?: string;
   icon: string;
+  description: string;
 }

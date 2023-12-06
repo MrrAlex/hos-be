@@ -21,4 +21,8 @@ export class ThingsService {
   update(id: string, dto: ThingDto) {
     return this.thing.update(id, dto);
   }
+
+  delete(id: string) {
+    return this.thing.delete(id);
+  }
 }

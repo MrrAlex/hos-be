@@ -19,7 +19,7 @@ export class Thing {
   volume: number;
 
   @Prop({ type: Types.ObjectId, ref: 'Container' })
-  instruments: Container | Types.ObjectId;
+  container: Container | Types.ObjectId;
 }
 
 export const ThingSchema = SchemaFactory.createForClass(Thing);
