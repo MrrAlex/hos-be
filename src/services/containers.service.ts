@@ -25,7 +25,9 @@ export class ContainersService {
         container.containers as Types.ObjectId[];
       for (let i = 0; i < childContainers.length; i++) {
         const child = await this.container.findById(childContainers[i]);
-        childContainers.push(...(child.containers as Types.ObjectId[]));
+        if (child?.containers) {
+          childContainers.push(...(child.containers as Types.ObjectId[]));
+        }
       }
       container.containers = childContainers;
     }
@@ -85,7 +87,7 @@ export class ContainersService {
       );
       if (currentContainer.volume < takenSpace) {
         const message =
-          linkedContainers.length > 0
+          linkedContainers.length === 0
             ? ' in current container'
             : ' in parent container';
         throw new HttpException('Not enough space' + message, 500);
